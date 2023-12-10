@@ -15,9 +15,9 @@ class Graphics {
   wgpu::Device device = nullptr;
   wgpu::SwapChain swap_chain = nullptr;
   wgpu::RenderPipeline pipeline = nullptr;
-  wgpu::Buffer vertex_buffer;
-  wgpu::Buffer index_buffer;
-  wgpu::Buffer time_buffer;
+  wgpu::Buffer vertex_buffer = nullptr;
+  wgpu::Buffer index_buffer = nullptr;
+  wgpu::Buffer time_buffer = nullptr;
   std::vector<float> vertex_data;
   std::vector<uint16_t> index_data;
   float time_data = 0.0f;

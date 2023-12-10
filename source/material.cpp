@@ -1,6 +1,7 @@
 #include "material.hpp"
 
 #include "engine.hpp"
+#include "screenspace_mesh_renderer.hpp"
 using namespace ShiftFlamework;
 
 void Material::create_gpu_buffer(uint32_t height, uint32_t width,

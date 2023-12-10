@@ -1,7 +1,9 @@
 #include "screenspace_transform.hpp"
 
 #include "engine.hpp"
+#include "graphics.hpp"
 #include "matrix.hpp"
+#include "screenspace_mesh_renderer.hpp"
 using namespace ShiftFlamework;
 
 void ScreenSpaceTransform::create_gpu_buffer() {

@@ -1,5 +1,6 @@
 #include "screenspace_physics.hpp"
 
+#include "entity.hpp"
 #include "screenspace_transform.hpp"
 using namespace ShiftFlamework;
 

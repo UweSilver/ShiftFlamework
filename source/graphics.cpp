@@ -1,9 +1,12 @@
 #include "graphics.hpp"
 
+#include <memory>
+#include <string>
+#include <unordered_map>
+
 #include "engine.hpp"
 #include "matrix.hpp"
 #include "vector.hpp"
-
 using namespace ShiftFlamework;
 
 uint32_t ceil_to_next_multiple(uint32_t value, uint32_t step) {

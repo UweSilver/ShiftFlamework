@@ -1,27 +1,37 @@
 #pragma once
 
 #include <memory>
+#include <string>
+#include <typeinfo>
+#include <unordered_map>
 
-#include "graphics.hpp"
-#include "input.hpp"
-#include "screenspace_mesh_renderer.hpp"
-#include "screenspace_physics.hpp"
-#include "window.hpp"
 namespace ShiftFlamework {
 class Engine {
  private:
   Engine();
 
  public:
-  static std::tuple<std::shared_ptr<Graphics>, std::shared_ptr<Window>,
-                    std::shared_ptr<Input>,
-                    std::shared_ptr<ScreenSpaceMeshRenderer>,
-                    std::shared_ptr<ScreenSpacePhysics>>
-      modules;
+  static std::unordered_map<std::string, std::shared_ptr<void>> modules;
 
   template <typename T>
-  [[nodiscard]] static std::shared_ptr<T> get_module() noexcept {
-    return std::get<std::shared_ptr<T>>(Engine::modules);
+  static std::shared_ptr<T> get_module() {
+    auto type = typeid(T).name();
+    return std::static_pointer_cast<T>(Engine::modules.at(type));
+  }
+
+  template <typename T>
+  static std::shared_ptr<T> add_module() {
+    std::shared_ptr<T> ptr = std::make_shared<T>();
+    std::string str = typeid(T).name();
+    modules.emplace(str, ptr);
+    return ptr;
+  }
+
+  template <typename T>
+  static std::shared_ptr<T> add_module(std::shared_ptr<T> ptr) {
+    std::string str = typeid(T).name();
+    modules.emplace(str, ptr);
+    return ptr;
   }
 };
 }  // namespace ShiftFlamework

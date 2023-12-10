@@ -24,7 +24,8 @@ class Entity : public std::enable_shared_from_this<Entity> {
 
   template <class T>
   std::shared_ptr<T> get_component() {
-    auto ptr = component.at(typeid(T).name());
+    auto name = typeid(T).name();
+    auto ptr = component.at(name);
     auto r = std::reinterpret_pointer_cast<T>(ptr);
     return r;
   }

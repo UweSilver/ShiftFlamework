@@ -1,6 +1,7 @@
 #include "rigid_body.hpp"
 
 #include "engine.hpp"
+#include "screenspace_physics.hpp"
 using namespace ShiftFlamework;
 
 RigidBody::RigidBody(float radius, Math::Vector2f velocity)
